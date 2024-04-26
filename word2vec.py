@@ -19,6 +19,7 @@ word_vectors = word2vec[0].str.split(expand=True)
 #create colunm word
 word2vec["word"] = word_vectors[0]
 
+
 # create vector by addding alll colunm from 1 to 150 create a numpy array
 word2vec["vector"] = word_vectors[word_vectors.columns[1:]]\
     .apply(lambda x: np.array(x.astype(np.float32)), axis=1)
