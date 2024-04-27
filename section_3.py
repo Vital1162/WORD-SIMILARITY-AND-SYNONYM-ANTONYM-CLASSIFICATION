@@ -4,6 +4,7 @@ from word2vec import word2vec
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import precision_score, recall_score, f1_score
+from sklearn.neural_network import MLPClassifier
 
 
 """
@@ -63,4 +64,19 @@ print("Recall:", recall)
 print("F1 Score:", f1)
 
 
+mlp_model = MLPClassifier(hidden_layer_sizes=(100, 50), max_iter=10, activation='relu', solver='adam', random_state=42)
+# Fit MLP model
+mlp_model.fit(X_train, y_train)
 
+# Predict
+y_pred = mlp_model.predict(X_test)
+
+# Calculate evaluation metrics
+precision = precision_score(y_test, y_pred)
+recall = recall_score(y_test, y_pred)
+f1 = f1_score(y_test, y_pred)
+
+# Print evaluation metrics
+print("Precision:", precision)
+print("Recall:", recall)
+print("F1 Score:", f1)
