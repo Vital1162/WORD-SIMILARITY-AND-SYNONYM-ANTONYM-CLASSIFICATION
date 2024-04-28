@@ -48,6 +48,8 @@ X_test = np.concatenate([test_dataset['Vector1'].values.tolist(),\
 
 y_test = test_dataset['Relation'].values
 
+
+print("logistic Regression:\n")
 log_reg_model = LogisticRegression()
 
 log_reg_model.fit(X_train, y_train)
@@ -63,20 +65,17 @@ print("Precision:", precision)
 print("Recall:", recall)
 print("F1 Score:", f1)
 
-
+print("MLP:\n")
+# with 10 is enough
 mlp_model = MLPClassifier(hidden_layer_sizes=(100, 50), max_iter=10, activation='relu', solver='adam', random_state=42)
-# Fit MLP model
 mlp_model.fit(X_train, y_train)
 
-# Predict
 y_pred = mlp_model.predict(X_test)
 
-# Calculate evaluation metrics
 precision = precision_score(y_test, y_pred)
 recall = recall_score(y_test, y_pred)
 f1 = f1_score(y_test, y_pred)
 
-# Print evaluation metrics
 print("Precision:", precision)
 print("Recall:", recall)
 print("F1 Score:", f1)
