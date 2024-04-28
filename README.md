@@ -10,7 +10,7 @@ pandas
 sklearn
 ```
 ## Notes
-- word2vec for processing the W2V_150.txt to created word2vec table
+- word2vec.py: Processing the W2V_150.txt to created word2vec table
 - training.py: Create a training dataset for section_3
 - testing,.py: Create a testing dataset for section_3
 
