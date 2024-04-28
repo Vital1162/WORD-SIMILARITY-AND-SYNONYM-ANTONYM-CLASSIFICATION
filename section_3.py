@@ -67,7 +67,7 @@ print("F1 Score:", f1)
 
 print("MLP:\n")
 # with 10 is enough
-mlp_model = MLPClassifier(hidden_layer_sizes=(100, 50), max_iter=10, activation='relu', solver='adam', random_state=42)
+mlp_model = MLPClassifier(hidden_layer_sizes=(100, 50), max_iter=100, activation='relu', solver='adam', random_state=42)
 mlp_model.fit(X_train, y_train)
 
 y_pred = mlp_model.predict(X_test)
