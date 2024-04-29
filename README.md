@@ -17,7 +17,8 @@ sklearn
 ```
 ## Notes
 - word2vec.py: Processing the W2V_150.txt to created word2vec table
-- training.py: Create a training dataset for section_3
-- testing,.py: Create a testing dataset for section_3
+- training.py: Create a training dataset for section_3 store in txt folder
+- testing,.py: Create a testing dataset for section_3 store in txt folder
 - Each task in the test corresponds to each section.\
 Example: section_1.py is task 1 in the Test
+- txt folder: dataset used in this project
