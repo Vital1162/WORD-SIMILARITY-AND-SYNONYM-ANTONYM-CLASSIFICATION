@@ -13,7 +13,7 @@ def find_k_nearest_words(word2vec, target_word, k=5):
     #check target word in the word2vcec
     if target_word not in word2vec["word"].values:
         print(f"{target_word} not found in word2vec")
-        return []
+        return [None]
 
     # target word vector
     target_vec = word2vec[word2vec["word"] == target_word]["vector"].values[0]
@@ -31,8 +31,24 @@ def find_k_nearest_words(word2vec, target_word, k=5):
     return [word for word, _ in similarities[:k]]
 
 
-#some example test
+"""
+some test:
+"""
+# target word = táo; k= 6
 target_word = "táo"
 k_nearest_words = find_k_nearest_words(word2vec, target_word, k=6)
 print(f"The {len(k_nearest_words)} nearest words to '{target_word}' are:")
 print(k_nearest_words)
+print()
+# target word = sáng_lạng; k = 3 -> sử dụng một từ sai chính tả
+target_word = "sáng_lạng"
+k_nearest_words = find_k_nearest_words(word2vec, target_word, k=3)
+print(f"The {len(k_nearest_words)} nearest words to '{target_word}' are:")
+print(k_nearest_words)
+print()
+#target word = 6; k = 4 -> sử dụng một số
+target_word = "6"
+k_nearest_words = find_k_nearest_words(word2vec, target_word, k=4)
+print(f"The {len(k_nearest_words)} nearest words to '{target_word}' are:")
+print(k_nearest_words)
+print()

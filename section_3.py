@@ -23,9 +23,6 @@ train_dataset['Relation'] = train_dataset['Relation'].replace({'ANT': 0, 'SYN': 
 test_dataset['Relation'] = test_dataset['Relation'].replace({'ANT': 0, 'SYN': 1})
 
 
-print(train_dataset)
-print(test_dataset)
-
 # well we change it into np array to process
 # example [1 2 3] -> [1,2,3]
 def parse_vector(vector_string):
@@ -36,8 +33,14 @@ train_dataset['Vector2'] = train_dataset['Vector2'].apply(parse_vector)
 test_dataset['Vector1'] = test_dataset['Vector1'].apply(parse_vector)
 test_dataset['Vector2'] = test_dataset['Vector2'].apply(parse_vector)
 
+print("Training:")
 print(train_dataset)
+
+print()
+print("Testing:")
 print(test_dataset)
+
+print()
 
 X_train = np.concatenate([train_dataset['Vector1'].values.tolist(),\
     train_dataset['Vector2'].values.tolist()], axis=1)
@@ -49,7 +52,7 @@ X_test = np.concatenate([test_dataset['Vector1'].values.tolist(),\
 y_test = test_dataset['Relation'].values
 
 
-print("logistic Regression:\n")
+print("logistic Regression:")
 log_reg_model = LogisticRegression()
 
 log_reg_model.fit(X_train, y_train)
@@ -64,10 +67,10 @@ f1 = f1_score(y_test, y_pred)
 print("Precision:", precision)
 print("Recall:", recall)
 print("F1 Score:", f1)
-
-print("MLP:\n")
+print()
+print("MLP:")
 # with 10 is enough
-mlp_model = MLPClassifier(hidden_layer_sizes=(100, 50), max_iter=10, activation='relu', solver='adam', random_state=42)
+mlp_model = MLPClassifier(hidden_layer_sizes=(100, 50), max_iter=100, activation='relu', solver='adam', random_state=42)
 mlp_model.fit(X_train, y_train)
 
 y_pred = mlp_model.predict(X_test)
