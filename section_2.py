@@ -7,7 +7,7 @@ input: will be the word2vec table, target word,
 k is number word with closest cosin length (default is 5)
 with condition that the target word must be in word2vec
 
-output: list of word have closest cosin length
+output: list of word have closest cosine length
 """ 
 def find_k_nearest_words(word2vec, target_word, k=5):
     #check target word in the word2vcec
@@ -20,7 +20,6 @@ def find_k_nearest_words(word2vec, target_word, k=5):
 
     similarities = []
     for _, row in word2vec.iterrows():
-        
         if row["word"] != target_word:
             #compute the consine each word in word2vec with target word
             similarity = cosine_similarity([target_vec], [row["vector"]])[0][0]

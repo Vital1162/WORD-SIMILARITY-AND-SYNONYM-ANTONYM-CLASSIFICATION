@@ -11,7 +11,7 @@ word2vec = pd.read_table("txt/W2V_150.txt", header=None, skiprows=2)
 # print(word2vec)
 # word2vec[0] = word2vec[0].str.replace('[^\w\s]','')
 
-#slit with whitepace
+#split with whitepace
 word_vectors = word2vec[0].str.split(expand=True)
 
 # print(word_vectors)
