@@ -26,19 +26,19 @@ train_set = pd.concat([antonym, synonym])
 word2vec_dict = dict(zip(word2vec["word"], word2vec["vector"]))
 
 def get_word_vector(word):
-    return word2vec_dict.get(word, np.random.rand(300)) 
+    return word2vec_dict.get(word, np.random.rand(150)) 
 
 train_set["Vector1"] = train_set["Word1"].apply(get_word_vector)
 train_set["Vector2"] = train_set["Word2"].apply(get_word_vector)
 
 train_set = train_set.dropna(subset=["Vector1", "Vector2"])
 
-rows_with_null = train_set[train_set.isnull().any(axis=1)]
-if not rows_with_null.empty:
-    print("Rows with null elements:")
-    print(rows_with_null)
-else:
-    print("No rows contain null elements.")
+# rows_with_null = train_set[train_set.isnull().any(axis=1)]
+# if not rows_with_null.empty:
+#     print("Rows with null elements:")
+#     print(rows_with_null)
+# else:
+#     print("No rows contain null elements.")
 
 # store at txt folder
 train_set.to_csv("txt/training_data.csv", index=False)

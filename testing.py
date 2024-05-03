@@ -22,19 +22,19 @@ test_set = pd.concat([noun_set, verb_set, adj_set])
 word2vec_dict = dict(zip(word2vec["word"], word2vec["vector"]))
 
 def get_word_vector(word):
-    return word2vec_dict.get(word, np.random.rand(300)) 
+    return word2vec_dict.get(word, np.random.rand(150)) 
 
 test_set["Vector1"] = test_set["Word1"].apply(get_word_vector)
 test_set["Vector2"] = test_set["Word2"].apply(get_word_vector)
 
 test_set = test_set.dropna(subset=["Vector1", "Vector2"])
 
-rows_with_null = test_set[test_set.isnull().any(axis=1)]
-if not rows_with_null.empty:
-    print("Rows with null elements:")
-    print(rows_with_null)
-else:
-    print("No rows contain null elements.")
+# rows_with_null = test_set[test_set.isnull().any(axis=1)]
+# if not rows_with_null.empty:
+#     print("Rows with null elements:")
+#     print(rows_with_null)
+# else:
+#     print("No rows contain null elements.")
 
 print(test_set)
 
